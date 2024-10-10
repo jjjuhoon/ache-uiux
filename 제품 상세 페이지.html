@@ -1,0 +1,396 @@
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+<style>
+    .product-detail-page {
+        max-width: 375px; /* iPhone 13 Mini에 맞게 조정 */
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+        flex-direction: column;
+        overflow: hidden;
+        border: 1px solid #fff;
+    }
+    
+    .main-content {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .hero-image {
+      aspect-ratio: 3.15;
+      object-fit: contain;
+      width: 100%;
+    }
+    
+    .product-info {
+      align-self: stretch;
+      display: flex;
+      margin-top: 27px;
+      width: 100%;
+      flex-direction: column;
+    }
+    
+    .product-summary {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        justify-content: space-between; /* 요소들이 양 끝으로 배치되도록 */
+        gap: 15px;
+        padding: 0 20px; /* 좌우 여백 추가 */
+    }
+    
+    .product-image-container {
+        width: 160px; /* 이미지 크기 조정 */
+    }
+    
+    .product-image {
+        width: 100%;
+        max-width: 160px;
+    }
+    
+    .image-navigation {
+      align-self: center;
+      display: flex;
+      min-height: 4px;
+      margin-top: 15px;
+      gap: 4px;
+    }
+    
+    .product-details {
+        width: calc(100% - 180px); /* 이미지 너비를 고려해 남은 공간 사용 */
+        margin-left: 0; /* 오른쪽으로 이동 없이 배치 */
+    }
+    
+    .brand-container {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: start;
+    }
+    
+    .brand-name {
+      width: 18px;
+      font-size: 8px;
+      color: #4c4a4b;
+      font-weight: 400;
+      line-height: 1;
+      padding: 1px 0;
+      font-weight: bold; /* 볼드체로 변경 */
+      margin-bottom: 1px; /* 간격을 줄임 */
+
+    }
+    
+    .product-name-container {
+        margin-top: 4px; /* 제품명과 브랜드명 간 간격 축소 */
+    }
+    
+    .product-name {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
+      width: 100%;
+      font-weight: bold; /* 볼드체로 변경 */
+
+    }
+    
+    .product-code {
+      font-size: 8px;
+      font-weight: 100;
+      line-height: 1;
+      margin-top: 6px;
+    }
+    
+    .product-price {
+      color: #111;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 22px;
+      margin-top: 42px;
+      font-weight: bold; /* 볼드체로 변경 */
+
+    }
+    
+    .product-variant-bar {
+      display: flex;
+      margin-top: 20px;
+      width: 100%;
+      align-items: center;
+      gap: 29px;
+      color: #111;
+      white-space: nowrap;
+      justify-content: start;
+      font: 400 8px/1 Noto Sans KR, sans-serif;
+    }
+    
+    .variant-spacer {
+      background-color: #fff;
+      align-self: stretch;
+      display: flex;
+      width: 20px;
+      height: 19px;
+      margin: auto 0;
+    }
+    
+    .variant-selector {
+      border-radius: 1px;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+      border: 1px solid #ccc;
+      align-self: stretch;
+      display: flex;
+      min-width: 240px;
+      align-items: center;
+      justify-content: space-between;
+      width: 277px;
+      margin: auto 0;
+      padding: 6px 8px;
+    }
+    
+    .variant-option {
+      align-self: stretch;
+      overflow: hidden;
+      width: 24px;
+      margin: auto 0;
+      padding: 1px;
+    }
+    
+    .dropdown-icon {
+      aspect-ratio: 1;
+      object-fit: contain;
+      width: 12px;
+      align-self: stretch;
+      margin: auto 0;
+    }
+    
+    .action-buttons {
+      display: flex;
+      margin-top: 27px;
+      width: 352px;
+      max-width: 100%;
+      align-items: center;
+      gap: 5px;
+      text-align: center;
+      justify-content: space-between;
+      font: 700 8px/4 Noto Sans KR, sans-serif;
+    }
+    
+    .wishlist-button,
+    .funding-button {
+        border-radius: 8px;
+        overflow: hidden;
+        padding: 8px 0; /* 좌우 패딩 제거 */
+        font-size: 10px; /* 텍스트 크기 조정 */
+        flex-grow: 10; /* 너비를 자동으로 맞추기 위해 설정 */
+        margin: 0 1px; /* 버튼 사이의 간격 */
+        font-weight: bold; /* 볼드체로 변경 */
+
+    }
+    .wishlist-button {
+        color: #ff8e8d;
+        border: 1px solid #ff8e8d;
+        background-color: transparent;
+        width: 50%; /* 약간 작은 너비로 설정 */
+    }
+    
+    .funding-button {
+        background-color: #ff8e8d;
+        color: #fff;
+        border: 1px solid #ff8e8d;
+        width: 50%; /* 약간 큰 너비로 설정 */
+    }
+    
+    .product-details-section {
+      display: flex;
+      margin-top: 27px;
+      width: 315px;
+      max-width: 100%;
+      flex-direction: column;
+      font-family: Noto Sans KR, sans-serif;
+      color: #111;
+    }
+    
+    .details-menu {
+      display: flex;
+      width: 100%;
+      justify-content: space-around; /* 아이템이 고르게 분배되도록 */
+
+      align-items: center;
+      gap: 40px 30px;
+      font-size: 8px;
+      font-weight: 400;
+      line-height: 42px;
+      margin-top: -15px; /* 값을 음수로 설정해 위로 이동 */
+
+    }
+    
+    .menu-item {
+      align-self: stretch;
+      width: 35px;
+      margin: auto 0;
+    }
+    
+    .menu-item-review {
+      align-self: stretch;
+      width: 18px;
+      margin: auto 0;
+    }
+    
+    .menu-item-inquiry {
+      color: #000;
+      font-family: Roboto, sans-serif;
+      align-self: stretch;
+      width: 25px;
+      margin: auto 0;
+    }
+    
+    .details-content {
+      align-self: center;
+      display: flex;
+      margin-top: 30px;
+      width: 100%;
+      flex-direction: column;
+      font-size: 8px;
+      font-weight: 700;
+      line-height: 1;
+      margin-top: -1px; /* 값을 음수로 설정해 위로 이동 */
+      margin-right: 3px; /* 값을 음수로 설정해 위로 이동 */
+
+
+    }
+    
+    .details-image {
+      aspect-ratio: 3.1;
+      object-fit: contain;
+      width: 100%;
+      
+    }
+    
+    .bottom-navigation {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 12px;
+        background-color: rgba(0, 0, 0, 0.25); /* 반투명한 검은색 */
+        color: #fff;
+        font-size: 12px;
+    }
+
+    .nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    .nav-icon {
+        width: 17px;
+        height: 17px;
+        margin-bottom: 5px;
+    }
+
+    .nav-text {
+        color: #fbeee8;
+    }
+
+    .nav-button {
+        background-color: #fff;
+        box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+        border-radius: 50%;
+        display: flex;
+        width: 71px;
+        height: 71px;
+        justify-content: center;
+        align-items: center;
+        margin-top: -5px;
+    }
+
+    .nav-button .nav-icon {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    </style>
+    
+    <section class="product-detail-page">
+      <div class="main-content">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/63b7598a75a5e1248a0609e032156a701d7af58abf9f3a4b2e603d00a3c1a8dd?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Product hero image" class="hero-image" />
+        <div class="product-info">
+          <div class="product-summary">
+            <div class="product-image-container">
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1ab3baa0fb318db6239908da8e3b1cea9c46c6d2c3e96837a592d193891e1c83?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Product thumbnail" class="product-image" />
+              <div class="image-navigation" aria-hidden="true"></div>
+            </div>
+            <div class="product-details">
+              <div class="brand-container">
+                <p class="brand-name">삼성</p>
+                <div class="product-name-container">
+                  <h1 class="product-name">스마트모니터 무빙 스탠드<br> M7 M70 D 107.9cm 화이트</h1>
+                  <p class="product-code">LS43DM703UK-ST</p>
+                </div>
+              </div>
+              <p class="product-price">949,000원</p>
+            </div>
+          </div>
+          <div class="product-variant-bar">
+            <div class="variant-spacer"></div>
+            <div class="variant-selector">
+              <span class="variant-option">43인치</span>
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c08acda915c3d14bab150e1470f15f411b20912ffd0ba94d0cd0922510e6779d?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="" class="dropdown-icon" aria-hidden="true" />
+            </div>
+            <div class="variant-spacer"></div>
+          </div>
+        </div>
+        <div class="action-buttons">
+          <button class="wishlist-button">관심 목록 추가</button>
+          <button class="funding-button">펀딩 올리기</button>
+        </div>
+        <div class="product-details-section">
+          <nav class="details-menu">
+            <a href="#description" class="menu-item">상세 설명</a>
+            <a href="#info" class="menu-item">상세 정보</a>
+            <a href="#reviews" class="menu-item-review">리뷰</a>
+            <a href="#inquiry" class="menu-item-inquiry">문의 3</a>
+            <a href="#shipping" class="menu-item">배송 정보</a>
+          </nav>
+          <div class="details-content">
+            <h2 id="description">상세 설명</h2>
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ecd9655883e2453b3833091a26f4550f00e7ef7995b03d614439b4a3a79c089e?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Detailed product description" class="details-image" />
+          </div>
+        </div>
+      </div>
+      <nav class="bottom-navigation">
+        <div class="nav-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/71ee1a501fb3be3ea91aa08dff797bb3bfc8a4474867d5b2e6aabf623e71ff7c?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="" class="nav-icon" aria-hidden="true" />
+            <span class="nav-text">펀딩 조회</span>
+        </div>
+        <div class="nav-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/7ca3f97f2d8ac3553e7e1bd91d077d9b030da6a4bb873a930228185d8ce16cfb?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="" class="nav-icon" aria-hidden="true" />
+            <span class="nav-text">송금 조회</span>
+        </div>
+        <button class="nav-button" aria-label="Main action">
+            <img src="https://velog.velcdn.com/images/kkaerrung/post/480ceb63-53a9-41b9-b7c7-e63c76cec526/image.png" alt="Home Icon" class="nav-icon" />
+        </button>
+        <div class="nav-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/8919cff6e263b029cb12e5459d70828ab386b931322a5dab53d8270c55f2437f?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="" class="nav-icon" aria-hidden="true" />
+            <span class="nav-text">청첩장</span>
+        </div>
+        <div class="nav-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c694252d9e31c6338d4d6780433c917994fd1dbe5d7563b71edb7b2281636863?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="" class="nav-icon" aria-hidden="true" />
+            <span class="nav-text">마이페이지</span>
+        </div>
+    </nav>
+    </section>

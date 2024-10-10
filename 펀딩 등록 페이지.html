@@ -1,0 +1,467 @@
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+<style>
+    .funding-registration-page {
+        max-width: 375px; /* iPhone 13 Mini 화면 너비에 맞춤 */
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 20px;
+        background-color: #fff;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+        border: 1px solid #fff;
+        font-family: 'Noto Sans KR', sans-serif;
+        overflow: hidden;
+      }
+    
+
+      .ad-arrow:nth-of-type(1) {
+        opacity: 0; /* 첫 번째 요소에만 적용 */
+      }
+      
+  .top-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 요소 사이의 간격을 넓힘 */
+    margin-top: 7px;
+    padding: 10px 20px; /* 양쪽 끝 여백을 줄여 화면의 끝쪽으로 배치 */
+    justify-content: space-between; /* 요소들을 양 끝으로 배치 */
+  }
+    
+  .logo {
+    width: 109px;
+    height: 51px;
+    transform: translateX(-23px); /* 로고를 왼쪽으로 10px 이동 */
+  }
+    
+    .search-bar {
+      flex-grow: 1;
+      height: 36px;
+      background-color: #fff;
+    }
+    
+    .notification-icon {
+      width: 58px;
+      height: 24px;
+    }
+    
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 7px;
+    }
+    
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      width: 100%;
+      max-width: 346px;
+      text-align: center;
+      font-size: 8px;
+      color: #111;
+      letter-spacing: -0.3px;
+    }
+    
+    .category-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .category-icon {
+      width: 74px;
+      height: 74px;
+      object-fit: contain;
+    }
+    
+    .category-name {
+      margin-top: 10px;
+    }
+    
+    .advertisement {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin-top: 13px;
+      overflow: hidden;
+    }
+    
+    .ad-arrow {
+      width: 24px;
+      height: 24px;
+    }
+    
+    .ad-content {
+      position: relative;
+      width: 258px;
+      height: 54px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    
+    .ad-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .ad-label {
+      position: absolute;
+      top: 3px;
+      right: 52px;
+      background-color: rgba(0, 0, 0, 0.25);
+      color: #fff;
+      font-size: 4px;
+      font-weight: 700;
+      padding: 3px 4px;
+      border-radius: 8px;
+    }
+    
+    .ranking-section {
+      margin-top: 13px;
+      width: 100%;
+      max-width: 297px;
+      text-align: center;
+    }
+    
+    .ranking-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #111;
+    }
+    
+    .ranking-categories {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 9px;
+      font-size: 10px;
+    }
+    
+    .ranking-category {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .ranking-icon {
+      width: 30px;
+      height: 30px;
+    }
+    
+    .ranking-label {
+      margin-top: 6px;
+      font-size: 8px;
+      color: #ff8e8d;
+    }
+    
+    .tab-list {
+      display: flex;
+      justify-content: space-around;
+      background-color: #fbeee8;
+      border-radius: 4px;
+      margin-top: 9px;
+      padding: 7px 0;
+      font-size: 8px;
+      color: #ff8e8d;
+    }
+    
+    .tab-active {
+      font-weight: 700;
+    }
+    
+    .price-range {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 9px;
+        padding: 4px 75px; /* 좌우 padding을 줄여서 간격 좁힘 */
+        font-size: 4px;
+        gap: 5px; /* 간격 조절 */
+      }
+    
+      .price-range span {
+        flex-grow: 1;
+        text-align: center;
+      }
+    
+      .price-active {
+        color: #111;
+        font-weight: 700;
+      }
+    
+    .price-active {
+      color: #111;
+      font-weight: 700;
+    }
+    
+    .product-grid {
+      display: flex;
+      gap: 30px;
+      overflow-x: auto;
+      margin-top: 13px;
+      padding: 0 10px;
+    }
+    
+    .product-card {
+      width: 58px;
+      flex-shrink: 0;
+    }
+    
+    .product-image {
+      width: 55px;
+      height: 55px;
+      object-fit: contain;
+      border-radius: 5px;
+    }
+    
+    .product-info {
+      font-size: 4px;
+      line-height: 1.5;
+    }
+    
+    .product-brand {
+      color: #4c4a4b;
+    }
+    
+    .product-name {
+      color: #111;
+    }
+    
+    .product-price {
+      color: #111;
+      font-weight: 700;
+      margin-top: 5px;
+    }
+    
+    .product-stats {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      margin-top: 7px;
+    }
+    
+    .stat-icon {
+      width: 7px;
+      height: 6px;
+    }
+    
+    .bottom-nav {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 12px;
+        background-color: rgba(0, 0, 0, 0.25) !important; /* 25% 투명한 검은색 */
+        color: #fff;
+        font-size: 12px;
+      }
+    
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 0;
+    }
+    
+    .nav-icon {
+      width: 17px;
+      height: 17px;
+      margin-bottom: 5px;
+    }
+    
+    .nav-label {
+      color: #fbeee8;
+    }
+    
+    .nav-special {
+      background-color: #fff;
+      box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+      border-radius: 50%;
+      width: 71px;
+      height: 71px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: -5px;
+    }
+
+    .nav-special .nav-icon {
+        width: 35px; /* 필요에 따라 크기 조정 */
+        height: 35px;
+    }
+    </style>
+    
+    <section class="funding-registration-page">
+      <header class="top-menu">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/522b51303b3bca5947cf4b72c08be988220d8a947528a4da548de88cd54195a5?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Logo" class="logo">
+        <div class="search-bar"></div>
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ffe4a9c4a15755597100b71a40b48aa17cd75c3eb11202e9d2e3754e3d54724f?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Notifications" class="notification-icon">
+      </header>
+    
+      <main class="main-content">
+        <section class="category-grid">
+          <div class="category-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/99291c747814b04e1a96eb400961f4cc4f6ebd1b5b7d0de7ff36e6b22a1f120e?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="TV" class="category-icon">
+            <span class="category-name">TV</span>
+          </div>
+          <div class="category-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/3527edfccdac4e883dba8c2bcaed7ab5cc197956fafde4ebd2c6d1923535a8c5?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Refrigerator" class="category-icon">
+            <span class="category-name">냉장고</span>
+          </div>
+          <div class="category-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/81e06e697cf70ae33048bbc438a45ba42cef3abcc6a8564590d7963f9e028011?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Heating" class="category-icon">
+            <span class="category-name">난방</span>
+          </div>
+          <div class="category-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6cd8fa6edda3b5df112556990cd5a20a20c3a5f562deae28042fd2f2f9e5bfa9?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Air Conditioner" class="category-icon">
+            <span class="category-name">에어컨</span>
+          </div>
+          <div class="category-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0af3b0ba20710b6fdbf6aeb501f77288cb9312adb95764aeae1ce2dfa2ac688c?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="TV" class="category-icon">
+            <span class="category-name">TV</span>
+          </div>
+          <div class="category-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4114867a23d388c2703f86c0fa5495445a23551cfbf67a9f981dbf1facf6041b?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Refrigerator" class="category-icon">
+            <span class="category-name">냉장고</span>
+          </div>
+          <div class="category-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/13bc570dce24cf2dec4e250a93aece0518b9a8bc04e86b9eeb0da40cae434dd4?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Heating" class="category-icon">
+            <span class="category-name">난방</span>
+          </div>
+          <div class="category-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c1d19dbd7d2ca5cb2b5332a4321676b56975d70df32c9990e806307d2e039d74?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Air Conditioner" class="category-icon">
+            <span class="category-name">에어컨</span>
+          </div>
+          <div class="category-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/8deebc14e02edccd5fb2591c1155fb8e5050e126d3583be7d740630532155a52?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="TV" class="category-icon">
+            <span class="category-name">TV</span>
+          </div>
+          <div class="category-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/3912ef71e513b2f4e22255be0cbe833e7c33a89c067dc3958bb70c1f545c1c57?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Refrigerator" class="category-icon">
+            <span class="category-name">냉장고</span>
+          </div>
+          <div class="category-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/14a57dee8f01e63f69b1948bb575d6618b865417dc77b4d8aaefd824419a6ae1?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Heating" class="category-icon">
+            <span class="category-name">난방</span>
+          </div>
+          <div class="category-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/147eb7b513473af72505dfab022e81273f4c2ddcc1aa09fdaacbc8c8573f80b1?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Air Conditioner" class="category-icon">
+            <span class="category-name">에어컨</span>
+          </div>
+        </section>
+    
+        <section class="advertisement">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9dc2f0022bf0fde2b88a073140f59a8245255637cb9b578de5bdb03f73c449d4?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Previous" class="ad-arrow">
+          <div class="ad-content">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c6fce542f0b5b02785ccbfe4301ad4997b4ab0771afe5b42e516fc3786571fb6?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Advertisement" class="ad-image">
+            <span class="ad-label">광고</span>
+          </div>
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/250c9f9ed55534d09da8354f139d749f3e9f6e22e099703dfeafc0d5ca8268fa?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Next" class="ad-arrow">
+        </section>
+    
+        <section class="ranking-section">
+          <h2 class="ranking-title">실시간 급상승 선물랭킹</h2>
+          <div class="ranking-categories">
+            <div class="ranking-category">
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/8e265936bacefc3f172c4b2dc6bac32502cfe0e122e84c11e3d9b82f6d83922c?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Everyone" class="ranking-icon">
+              <span class="ranking-label">모두가</span>
+            </div>
+            <div class="ranking-category">
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0a67e876287ca87ef5f06f43aa170e71a4249e5818e91fc8d21a3cb0f6748111?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Women" class="ranking-icon">
+              <span class="ranking-label">여성이</span>
+            </div>
+            <div class="ranking-category">
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4c7ae9b6a576f0c4ad6711a75e971239f9ff185160c08742065ef03ce68086a4?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Men" class="ranking-icon">
+              <span class="ranking-label">남성이</span>
+            </div>
+          </div>
+          <nav class="tab-list">
+            <span>받고 싶어한</span>
+            <span class="tab-active">많이 선물한</span>
+            <span>위시로 받은</span>
+          </nav>
+          <div class="price-range">
+            <span>1만원 미만</span>
+            <span class="price-active">1-2만원대</span>
+            <span>3-4만원대</span>
+            <span>5만원 이상</span>
+          </div>
+        </section>
+    
+        <section class="product-grid">
+          <article class="product-card">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2a4b2ddeeefb8a76e732993367d9de24d2c1fd8aab55ffc9e9706db3d73d8865?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="투썸플레이스 상품" class="product-image">
+            <div class="product-info">
+              <p class="product-brand">투썸플레이스</p>
+              <p class="product-name">"달콤한 우리" 떠먹는 아박 + 아메리카노 (R) 2잔</p>
+              <p class="product-price">15,500 원</p>
+              <div class="product-stats">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e272f8c5fd80c4bbcf38893afc4c6733c7f6d5284dfdb6e086fdbce838038b7f?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Heart" class="stat-icon">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6ae8e9baad00af4da5176a2c5c473e85e38c22583ef878577c0ebd558b767076?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Views" class="stat-icon">
+                <span>5,734</span>
+              </div>
+            </div>
+          </article>
+          <article class="product-card">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/71076d40b7015ccffe1ff255a92e99eb5727107a21784d1192b8538b3e72c829?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="투썸플레이스 상품" class="product-image">
+            <div class="product-info">
+              <p class="product-brand">투썸플레이스</p>
+              <p class="product-name">"달콤한 우리" 떠먹는 아박 + 아메리카노 (R) 2잔</p>
+              <p class="product-price">15,500 원</p>
+              <div class="product-stats">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/25d4ca9fb62208f455ae765d86f1f6c64915e15376369c847b495a56c356a19c?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Heart" class="stat-icon">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ecd79743c93208f356657f9a66afce03b9b06ac2b1ee2483ad61e56cec2c461a?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Views" class="stat-icon">
+                <span>5,734</span>
+              </div>
+            </div>
+          </article>
+          <article class="product-card">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2a09b69f7d050e900e8e3ada8a3ec449da90c7a34c592949ad1fb1c3b885852?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="투썸플레이스 상품" class="product-image">
+            <div class="product-info">
+              <p class="product-brand">투썸플레이스</p>
+              <p class="product-name">"달콤한 우리" 떠먹는 아박 + 아메리카노 (R) 2잔</p>
+              <p class="product-price">15,500 원</p>
+              <div class="product-stats">
+                <span>5,734</span>
+              </div>
+            </div>
+          </article>
+          <article class="product-card">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/901c4eb8828af99c8c3bf4de902a95601e69ed5958a797e1fe16e561d3671096?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="투썸플레이스 상품" class="product-image">
+            <div class="product-info">
+              <p class="product-brand">투썸플레이스</p>
+              <p class="product-name">"달콤한 우리" 떠먹는 아박 + 아메리카노 (R) 2잔</p>
+              <p class="product-price">15,500 원</p>
+              <div class="product-stats">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/b4eb1f6f0c49fff3aaa0e761abff5734981038298c1f377f335b8de5f22f43a1?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Heart" class="stat-icon">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a08b56e15b799813168cf09f699e655a58c5293c3695bed0d58c57dfdd3d5a3e?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Views" class="stat-icon">
+                <span>5,734</span>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
+
+      <nav class="bottom-nav">
+        <div class="nav-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/8215ce5ab25e6ac2f502b5789ea093293e4bc4854d95d4355dcb77e85f86dba1?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Funding" class="nav-icon">
+            <span class="nav-label">펀딩 조회</span>
+        </div>
+        <div class="nav-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2da7daf1d2a276cf5f4523ad036727dbfdc4ccb0d136633b8e977222082f6d54?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Transfer" class="nav-icon">
+            <span class="nav-label">송금 조회</span>
+        </div>
+        <div class="nav-special">
+            <img src="https://velog.velcdn.com/images/kkaerrung/post/480ceb63-53a9-41b9-b7c7-e63c76cec526/image.png " alt="Home Icon" class="nav-icon"> <!-- 홈 아이콘 경로에 맞게 수정 -->
+        </div>
+        <div class="nav-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/52f3c632002e0f34eae8b988547c66edcd0826ace323a82061b1837dd0213c9c?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="Invitation" class="nav-icon">
+            <span class="nav-label">청첩장</span>
+        </div>
+        <div class="nav-item">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2856a87b163e8d7e85c8948cbf7363679e78907ce8ade28073e40107b4d8477?placeholderIfAbsent=true&apiKey=af9d5ad4bdc04315838a4f469ea30e0d" alt="My Page" class="nav-icon">
+            <span class="nav-label">마이페이지</span>
+        </div>
+    </nav>
+    
+    </section>
